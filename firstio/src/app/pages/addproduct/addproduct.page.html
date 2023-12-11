@@ -1,0 +1,98 @@
+<ion-header  [translucent]="true" collapse="condense">
+  <ion-toolbar>
+    <ion-back-button
+      icon="arrow-back"
+      slot="start"
+      (click)=" navigateBack()"
+      defaultHref="/"
+      text=""
+    ></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  <div class="container ion-margin">
+    <form [formGroup]="productForm" (ngSubmit)="productData()">
+      <ion-label>Product Image : </ion-label>
+      <p>
+        <ion-input type="file" formControlName="image" (change)="fileChange($event)" ></ion-input>
+      </p>
+      <ion-label>Product Name : </ion-label>
+      
+      <div *ngIf="e['name'].touched && e['name'].invalid" style="color: red;">
+        <div *ngIf="e['name'].errors && e['name'].errors['required']">Name is required </div>
+     </div>
+      <p>
+        <ion-input
+          type="text"
+          placeholder="Enter Product Name"
+          formControlName="name"
+          class="form-control"
+        ></ion-input>
+      </p>
+
+
+
+      <ion-label>Product Price : </ion-label>
+      <div *ngIf="e['price'].touched && e['price'].invalid" style="color: red;">
+        <div *ngIf="e['price'].errors && e['price'].errors['required']">price is required </div>
+     </div>
+      <p>
+        <ion-input
+          type="number"
+          placeholder="Enter Product Price"
+          formControlName="price"
+          class="form-control"
+        ></ion-input>
+      </p>
+      
+
+
+      <ion-label>Product Quality : </ion-label>
+      <div *ngIf="e['quality'].touched && e['quality'].invalid" style="color: red;">
+        <div *ngIf="e['quality'].errors && e['quality'].errors['required']">quality is required </div>
+     </div>
+
+      <p>
+        <ion-input
+          type="text"
+          placeholder="Enter Product Quality"
+          formControlName="quality"
+          class="form-control"
+        ></ion-input>
+      </p>
+
+      
+
+      <ion-label>Product Description : </ion-label>
+      
+      <div *ngIf="e['description'].touched && e['description'].invalid" style="color: red;">
+        <div *ngIf="e['description'].errors && e['description'].errors['required']">description is required </div>
+     </div>
+      <p>
+        <ion-input
+          type="text"
+          placeholder="Enter Product Description"
+          formControlName="description"
+          class="form-control"
+        ></ion-input>
+      </p>
+
+
+
+      <ion-label>Product Quantity : </ion-label>
+      <p>
+        <ion-input
+          type="text"
+          class="form-control"
+          readonly
+          formControlName="quantity"
+        ></ion-input>
+      </p>
+      <p>
+        <ion-button type="submit" [disabled]="!productForm.valid" >Add Product</ion-button>
+      </p>
+    </form>
+  </div>
+</ion-content>

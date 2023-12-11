@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+
+<div *ngIf="!loading && User">
+
+  <ion-card >
+    <!-- User Image -->
+    <img src="http://localhost:9000/img/{{User.image}}" alt="" style="border-radius: 50%; height: 100px; width: 100px;">
+
+    
+    <ion-card-content>
+      <p>
+      <ion-icon aria-hidden="true" name="person"></ion-icon>
+     <span style="font-size: 20px;"> {{User.name}}</span>
+     </p>
+  
+    <p>
+      <ion-icon aria-hidden="true" name="call"></ion-icon>
+      <span style="font-size: 20px;"> {{User.mobile}}</span>
+    </p>
+  
+      <p>
+        <ion-icon aria-hidden="true" name="mail"></ion-icon>
+        <span style="font-size: 20px;"> {{User.email}}</span>
+      </p>
+
+      <ion-button routerLink="/editprofile" >Edit Profile</ion-button>
+    </ion-card-content>
+
+  </ion-card>
+  
+</div>
+</ion-content>

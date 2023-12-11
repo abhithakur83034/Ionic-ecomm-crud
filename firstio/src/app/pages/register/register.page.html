@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  <div class="container ion-margin ">
+    <form [formGroup]="registerForm" (ngSubmit)="RegisterData()" >
+<p>
+  <ion-input type="text" placeholder="Enter UserName" formControlName="name" ></ion-input>
+
+</p>
+<p>
+  <ion-input type="number"  placeholder="Enter Mobile" formControlName="mobile" ></ion-input>
+  
+</p>
+<p>
+  <ion-input type="email"  placeholder="Enter Email" formControlName="email" ></ion-input>
+
+</p>
+<p>
+  <ion-input type="password"  placeholder="Enter Password" formControlName="password" ></ion-input>
+
+</p>
+<p>
+  <ion-button type="submit" [disabled]="!registerForm.valid" >Register</ion-button>
+</p>
+    </form>
+    <h4 routerLink="/login" >Login</h4>
+  </div>
+</ion-content>

@@ -1,0 +1,27 @@
+<!-- <div id="container">
+  <strong>{{ name }}</strong>
+<ion-header>
+  
+</ion-header>
+</div> -->
+
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        {{name}}
+      </ion-title>
+    </ion-toolbar>
+    <div class="ion-margin-top">
+      <ion-button id="present-alert">Click Me</ion-button>
+      <ion-alert
+        trigger="present-alert"
+        header="Alert"
+        subHeader="clicked on alert"
+        message="A message should be a short, complete sentence."
+        [buttons]="alertButtons"
+      ></ion-alert>
+    </div>
+  </ion-header>
+</ion-content>

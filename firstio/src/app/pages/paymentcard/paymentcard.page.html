@@ -1,0 +1,63 @@
+<ion-header  [translucent]="true" collapse="condense" >
+  <ion-toolbar>
+    <ion-back-button
+      icon="arrow-back"
+      slot="start"
+      defaultHref="/"
+      text=""
+    ></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <swiper-container effect="flip" [autoplay]="true" [delay]="3000">
+    <swiper-slide>
+      <img src="assets/images/atm.png" height="200px" width="200px" alt="">
+    </swiper-slide>
+    <swiper-slide><img src="assets/images/atm.png" height="200px" width="200px" alt=""></swiper-slide>
+    <swiper-slide><img src="assets/images/atm.png" height="200px" width="200px" alt=""></swiper-slide>
+  </swiper-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="paymentForm" (ngSubmit)="paymentData()" >
+          <p>
+            <ion-label>Select Card:</ion-label>
+            <ion-select placeholder="Select Card" formControlName="card">
+              <ion-select-option value="Debit Card">Debit Card</ion-select-option>
+              <ion-select-option value="Master Card">Master Card</ion-select-option>
+              <ion-select-option value="Credit Card">Credit Card</ion-select-option>
+              </ion-select>
+          </p>
+          <p>
+            <ion-label>Card Number:</ion-label>
+            <ion-input type="text" class="form-control" placeholder="8765 7657 0982 1356" formControlName="cardNumbar" maxlength="19" (keypress)="addSpace($event)" ></ion-input>
+          </p>     
+          <p>
+            <ion-label>Card Holder Name:</ion-label>
+            <ion-input type="text" class="form-control" placeholder="Enter Card Holder Name" formControlName="cardHolderName" ></ion-input>
+          </p>     
+          <ion-row>
+            <ion-col>
+              <ion-label>CVV:</ion-label>
+              <ion-input type="text" id="password"  formControlName="cvv"  placeholder="Enter Card CVV" maxlength="3"  (keyup)="password($event)" ></ion-input>
+            </ion-col> 
+            <!-- <ion-col>
+              <ion-label>CVV:</ion-label>
+              <ion-input type="text" formControlName="cvv" placeholder="Enter Card CVV" maxlength="3" (keyup)="convertCvv($event)"></ion-input>
+            </ion-col> -->
+            <ion-col>
+              <ion-label>Expiry Date:</ion-label>
+              <ion-input type="text" placeholder="02/26" formControlName="expiry" maxlength="5"  (keyup)="setexpiry($event)" ></ion-input>
+            </ion-col>
+          
+          </ion-row> 
+          
+          <p>
+            <ion-button type="submit" [disabled]="!paymentForm.valid" class="form-control">Add Details</ion-button>   
+          </p>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

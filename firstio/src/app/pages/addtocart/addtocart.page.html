@@ -1,0 +1,46 @@
+<ion-header  [translucent]="true" collapse="condense" >
+  <ion-toolbar>
+    <ion-back-button
+      icon="arrow-back"
+      slot="start"
+      (click)=" navigateBack()"
+      defaultHref="/"
+      text=""
+    ></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        
+        
+        <ion-card *ngFor="let product of filterData">
+          <img
+            src="http://localhost:9000/img/{{product.image}}"
+            alt="Silhouette of mountains"
+            src="https://ionicframework.com/docs/img/demos/card-media.png"
+            width="100%"
+          />
+          <ion-card-header>
+            <ion-card-title>{{product.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content
+            ><p>{{product.description}}</p>
+            <p>{{product.price}}</p>
+            <p style="display: flex; justify-content: space-between;" > 
+              <ion-icon size="large" name="add-circle" (click)="increment(product)" ></ion-icon>
+              <b>{{product.quantity}}</b>
+              <ion-icon size="large" name="remove-circle"  (click)="decrement(product)" ></ion-icon>
+              <ion-icon size="large" name="trash-bin"  (click)="deletePro(product)" ></ion-icon>    
+              </p>
+            </ion-card-content>
+        </ion-card>
+        <span>Total Price : {{totalPrice}} </span> <br/>
+        <span>Total Quantity : {{totalQuantity}} </span> <br/>
+        <ion-button type="submit" (click)="card()" >But Now</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

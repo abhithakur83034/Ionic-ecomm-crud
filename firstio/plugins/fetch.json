@@ -1,0 +1,10 @@
+{
+  "cordova-plugin-nativestorage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-nativestorage@^1.0.9"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

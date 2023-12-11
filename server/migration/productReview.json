@@ -1,0 +1,17 @@
+{
+    "name":{
+        "type":"String"
+    },
+    "image":{
+        "type":"String"
+    },
+    "itemId":{
+        "type":"String"
+    },
+    "userId":{
+        "type":"String"
+    },
+    "review":{
+        "type":"String"
+    }
+}

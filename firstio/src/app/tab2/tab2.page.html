@@ -1,0 +1,48 @@
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large" style=" display: flex; justify-content: space-between;">
+      <span>Product's</span>
+      <ion-button routerLink="/addproduct" color="primary" style="margin-left: 135px;" >ADD</ion-button>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  
+  <div id="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          
+          
+          <ion-card *ngFor="let product of products">
+            <img
+              src="http://localhost:9000/img/{{product.image}}"
+              alt="Silhouette of mountains"
+              src="https://ionicframework.com/docs/img/demos/card-media.png"
+              width="100%"
+            />
+            <ion-card-header>
+              <ion-card-title>{{product.name}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content
+              ><p>{{product.description}}</p>
+              <p>{{product.price}}</p>
+              <p style="display: flex; justify-content: space-between;" > 
+                <ion-icon size="large" name="add-circle" (click)="addToCart(product)" ></ion-icon>
+                <ion-icon size="large" name="trash-bin" (click)="deleteProduct(product._id)" ></ion-icon>    
+                <ion-icon size="large"  name="create-outline" (click)="editProduct(product._id)" ></ion-icon>        
+                </p>
+              </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  *ngIf="cartbtn" >
+    <ion-fab-button routerLink="/addtocart">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

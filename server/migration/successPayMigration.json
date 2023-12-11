@@ -1,0 +1,10 @@
+{
+  "name": "String",
+  "price": "Number",
+  "quantity": "Number",
+  "userName": "String",
+  "items": [{}],
+  "date": "String",
+  "totalQuantity": "String",
+  "totalPrice": "String"
+}

@@ -1,0 +1,24 @@
+{
+    "card": {
+      "type": "String"
+    },
+    "cardNumbar": {
+      "type": "String"
+    },
+    "cardHolderName": {
+      "type": "String"
+    },
+    "cvv": {
+      "type": "String"   
+    },
+    "expiry": {
+      "type": "String"
+    },
+    "userId": {
+      "type": "String"
+    },
+    "itemId":{
+      "type":"String"
+    }
+  }
+  

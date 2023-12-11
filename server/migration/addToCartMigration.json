@@ -1,0 +1,11 @@
+{
+  "image": "String",
+  "name": "String",
+  "price": "Number",
+  "quantity": "Number",
+  "quality": "String",
+  "description": "String",
+  "userId":"String",
+  "itemId":"String"
+}
+ 
