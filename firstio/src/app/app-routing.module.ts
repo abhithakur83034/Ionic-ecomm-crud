@@ -57,7 +57,21 @@ const routes: Routes = [
   {
     path: 'addcard/:id',
     loadChildren: () => import('./pages/addcard/addcard.module').then( m => m.AddcardPageModule)
+  },
+  {
+    path: 'reviews',
+    loadChildren: () => import('./pages/reviews/reviews.module').then( m => m.ReviewsPageModule)
+  },
+  {
+    path: 'productdetails/:id',
+    loadChildren: () => import('./pages/productdetails/productdetails.module').then( m => m.ProductdetailsPageModule)
+  },
+  {
+    path: 'currency/:id',
+    loadChildren: () => import('./pages/currency/currency.module').then( m => m.CurrencyPageModule)
   }
+
+
 ];
 @NgModule({
   imports: [

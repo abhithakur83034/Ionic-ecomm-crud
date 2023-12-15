@@ -1,0 +1,155 @@
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-back-button
+      icon="arrow-back"
+      slot="start"
+      defaultHref="/"
+      text=""
+      (click)=" navigateBack()"
+    ></ion-back-button>
+    <ion-title size="large">productdetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card *ngFor="let product of filterProduct">
+          <img
+            src="http://localhost:9000/img/{{product.image}}"
+            alt="Silhouette of mountains"
+            src="https://ionicframework.com/docs/img/demos/card-media.png"
+            width="100%"
+          />
+          <ion-card-header>
+            <ion-card-title>{{product.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content
+            ><p>{{product.description}}</p>
+            <p>{{product.price}}</p>
+            <!-- <p style="display: flex; justify-content: space-between;" > 
+              <ion-icon size="large" name="add-circle" (click)="addToCart(product)" ></ion-icon>
+              <ion-icon size="large" name="trash-bin" (click)="deleteProduct(product._id)" ></ion-icon>    
+              <ion-icon size="large"  name="create-outline" (click)="editProduct(product._id)" ></ion-icon>        
+              </p> -->
+          </ion-card-content>
+          <p>
+            <!-- <span style="cursor: pointer;" (click)="reviewClick()" >Add Review's</span> -->
+          </p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <h4>Product review's</h4>
+        <ion-grid>
+          <ion-row *ngIf="allReview">
+            <ion-col size="12" *ngIf="allReview.length === 0">
+              <h4 style="color: red">
+                No Review Till Now Please Add Your Review...
+              </h4>
+              <form [formGroup]="reviewForm" (ngSubmit)="addProductReview()">
+                <p>
+                  <input
+                    type="text"
+                    placeholder="Add Your Review"
+                    class="form-control"
+                    formControlName="review"
+                  />
+                </p>
+                <ion-button
+                  type="submit"
+                  size="small"
+                  class="btn btn-outline-success"
+                  >Submit</ion-button
+                >
+              </form>
+            </ion-col>
+            <ion-col size="12" *ngIf="allReview.length > 0">
+              <div>
+                <div class="row" *ngFor="let review of allReview  let i = index">
+                  <div class="col-sm-12 mt-3" style="display: flex">
+                    <img
+                      src="http://localhost:9000/img/{{ review.image }}"
+                      alt="{{ review.name }} "
+                      style="height: 50px; width: 50px; border-radius: 50%"
+                    />
+                    <p style="font-size: 20px; margin: 10px">
+                      {{ review.name }}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p *ngIf="userData._id !== review.userId">
+                      {{ review.review }}
+                    </p>
+                    <p *ngIf="!editEnbale && userData._id === review.userId">
+                      {{ review.review }}
+                      <ion-icon
+                        *ngIf="!editEnbale && userData._id === review.userId"
+                        name="pencil"
+                        style="cursor: pointer; color: aqua; margin-top: 5px"
+                        (click)="editButton(review)"
+                        >edit</ion-icon
+                      >
+                    </p>
+                    <div>
+                      <span style="color: red;">
+                        <!-- {{filterlikeBy.length}} -->
+                      </span>
+                      <ion-icon
+                        name="heart"
+                        [color]="show[i] ? 'danger' : ''"
+                        (click)="togglelike(review, i)"
+                      ></ion-icon>
+                    </div>
+                    
+                    
+                    <p
+                      style="font-size: 18px; margin: 10px"
+                      *ngIf="editEnbale && userData._id === review.userId"
+                    >
+                      <span style="display: flex">
+                        <input
+                          type="text"
+                          [(ngModel)]="reviewInput"
+                          class="form-control"
+                        />
+                      </span>
+                    </p>
+                  </div>
+                  <ion-button
+                    *ngIf="editEnbale && userData._id === review.userId"
+                    (click)="editProReview(review)"
+                    class="btn btn-info"
+                    size="small"
+                  >
+                    Change Review
+                  </ion-button>
+                </div>
+              </div>
+
+              <div *ngIf="showForm">
+                <form [formGroup]="reviewForm" (ngSubmit)="addProductReview()">
+                  <p>
+                    <input
+                      type="text"
+                      placeholder="Add Your Review"
+                      class="form-control"
+                      formControlName="review"
+                    />
+                  </p>
+                  <ion-button
+                    type="submit"
+                    size="small"
+                    class="btn btn-outline-success"
+                    >Submit</ion-button
+                  >
+                </form>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

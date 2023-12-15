@@ -45,4 +45,15 @@ deleteProduct(id:any){
   return this.http.delete(`http://localhost:9000/api/delete/${id}`)
 }
 
+//like product**********************************************************************************************************************
+likeProduct(data:any){
+  return this.http.post(`http://localhost:9000/api/likeproduct`,data)
+}
+
+
+//dislike product*****************************************************************************************************************
+
+LikesReviews(){
+  return this.http.get(`http://localhost:9000/api/getreviewlike`)
+}
 }

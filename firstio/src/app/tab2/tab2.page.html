@@ -22,6 +22,7 @@
               alt="Silhouette of mountains"
               src="https://ionicframework.com/docs/img/demos/card-media.png"
               width="100%"
+              (click)="productDetails(product._id)"
             />
             <ion-card-header>
               <ion-card-title>{{product.name}}</ion-card-title>
@@ -35,6 +36,9 @@
                 <ion-icon size="large"  name="create-outline" (click)="editProduct(product._id)" ></ion-icon>        
                 </p>
               </ion-card-content>
+              <p>
+                <!-- <span style="cursor: pointer;" (click)="reviewClick()" >Add Review's</span> -->
+              </p>
           </ion-card>
         </ion-col>
       </ion-row>

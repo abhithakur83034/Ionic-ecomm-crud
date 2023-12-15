@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Currency Converter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-label>Select Your Currency</ion-label>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col size="6" class="ion-padding">
+        <ion-item>
+          <ion-select placeholder="From Currency" [(ngModel)]="selectedFromCurrency" (ionChange)="updateFromCurrencyOptions()">
+            <ion-select-option *ngFor="let currency of selectedCurrency" [value]="currency">{{ currency.symbol }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    
+      <ion-col size="6" class="ion-padding">
+        <ion-item>
+          <ion-select placeholder="To Currency" [(ngModel)]="selectedToCurrency" (ionChange)="updateToCurrencyOptions()">
+            <ion-select-option *ngFor="let currency of toCurrencyOptions">{{ currency.symbol }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+      <p>
+        <span>{{forInputSymbol}}</span>
+        <ion-input type="number" placeholder="Amount" class="custom-input"  (input)="inputNumber($event)" ></ion-input>
+      </p>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <p>
+         <span>{{selectedToCurrency}}</span>
+        <ion-input type="text" readonly placeholder="Total Amount" class="custom-input"></ion-input>
+      </p>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+</ion-content>

@@ -14,7 +14,9 @@ const addToCartRoute = require('./route/addToCartRooute');
 const reviewRouter = require('./route/reviewRoute');
 const productReviewRoute = require('./route/productReviewRoute');
 const myPayment = require('./route/myPaymentRoute');
-const successPay = require('./route/successPayRoute')
+const successPay = require('./route/successPayRoute');
+const likeRoute = require('./route/likeRoute');
+const currencyRoute = require('./route/currencyRoute');
 
 
 app.use('/api',userRoute);
@@ -24,6 +26,8 @@ app.use('/api',reviewRouter);
 app.use('/api',productReviewRoute);
 app.use('/api',myPayment);
 app.use('/api',successPay);
+app.use('/api',likeRoute);
+app.use('/api',currencyRoute);
 
 
 module.exports=app

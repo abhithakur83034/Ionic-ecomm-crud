@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/srvices/account.service';
 import { AuthService } from "src/app/srvices/auth.service";
+import { LoaderService } from 'src/app/srvices/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginPage implements OnInit {
   rememberme:any
 
 
-  constructor(private userData:AccountService, private router:Router, private storage:AuthService) { 
+  constructor(private userData:AccountService, private router:Router, private storage:AuthService, private loader:LoaderService) { 
    
   }
 
@@ -69,7 +70,8 @@ ionViewWillEnter(){
       next: (res:any)=>{
         console.log(res.user); 
         if(res.status === 'success'){
-          alert('user Login')
+          // alert('user Login')
+          this.loader.showToast("Login successfully")
           this.storage.saveToStorage('user',res.user)
           if(this.rememberMe === true){
             this.storage.saveToStorage('rememberUser',this.loginForm.value)

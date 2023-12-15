@@ -36,6 +36,7 @@ const upload = multer({
 
 
 router.post('/addproreview',upload.single('image'),reviewController.addReview);
+router.post('/likeproduct',upload.single('image'),reviewController.like);
 router.get('/showproreview',reviewController.showReview);
 router.put('/editproReview',reviewController.geteditProductReview)
 

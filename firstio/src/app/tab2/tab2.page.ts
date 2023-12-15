@@ -25,12 +25,12 @@ export class Tab2Page implements OnInit {
     private Cart:AddtocartService,
     private storage:AuthService
   ) {
-    console.log("constructor");
+    // console.log("constructor");
     
   }
 
   ngOnInit(): void {
-    console.log("Enter tab ng");
+    // console.log("Enter tab ng");
     
     this.getProductFromCart()
 
@@ -38,12 +38,12 @@ export class Tab2Page implements OnInit {
     this.user = this.storage
     .getFromStorage('user')
     .then((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.userData = JSON.parse(res);
-      console.log(this.userData);
+      // console.log(this.userData);
     })
     .catch((error: any) => {
-      console.log(error);
+      // console.log(error);
     });
 
 
@@ -58,7 +58,7 @@ export class Tab2Page implements OnInit {
 
 
   ionViewWillEnter(){
-    console.log("Enter in tab 2");
+    // console.log("Enter in tab 2");
     
     this.getProduct();
 
@@ -77,19 +77,19 @@ export class Tab2Page implements OnInit {
     this.productData.getPRoduct().subscribe({
       next: (res: any) => {
         if (res.status === 'success') {
-          console.log(res);
+          // console.log(res);
           this.products = res.message;
           this.loader.dismissLoading();
           this.Loading = false;
         }
       },
       error: (error: any) => {
-        console.log(error);
+        // console.log(error);
         this.loader.dismissLoading();
           this.Loading = false;
       },
       complete: () => {
-        console.log('completed');
+        // console.log('completed');
       },
     });
   }
@@ -103,9 +103,9 @@ this.router.navigate(['/editproduct',id])
 
 
   deleteProduct(id:any){
-   console.log(id);
+  //  console.log(id);
    this.productData.deleteProduct(id).subscribe((res:any)=>{
-    console.log(res);
+    // console.log(res);
     if(res.status === 'deleted'){
       this.getProduct()
     }
@@ -116,12 +116,12 @@ this.router.navigate(['/editproduct',id])
 
   addToCart(product:any){
 
-    console.log(product);
+    // console.log(product);
     product.userId = this.userData._id;
     product.itemId = product._id;
     this.Cart.addToCart(product).subscribe({
       next: (res:any)=>{
-        console.log(res);      
+        // console.log(res);      
         if(res.status === "success"){
           this.getProductFromCart()
           this.loader.showToast(res.message)
@@ -129,9 +129,9 @@ this.router.navigate(['/editproduct',id])
           this.loader.showToast(res.message)
         }
       },error:(error:any)=>{
-        console.log(error);        
+        // console.log(error);        
       },complete:()=>{
-        console.log("complete");
+        // console.log("complete");
         
       }
     })
@@ -143,10 +143,10 @@ this.router.navigate(['/editproduct',id])
   cartbtn:boolean=false;
   getProductFromCart(){
 this.Cart.getProcut().subscribe((res:any)=>{
-  console.log(res);
+  // console.log(res);
   if(res.status === "success"){
 this.filterCart = res.get.filter((item:any)=>item.userId === this.userData._id)
-console.log(this.filterCart.length);
+// console.log(this.filterCart.length);
 if(this.filterCart.length >= 1){
   this.cartbtn = true
 }else{
@@ -158,4 +158,9 @@ if(this.filterCart.length >= 1){
 
 
 
+  productDetails(id:any){
+console.log("Clicked on Review's",id);
+this.router.navigate(['/productdetails',id])
+
+}
 }

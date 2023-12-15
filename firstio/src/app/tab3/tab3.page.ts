@@ -40,6 +40,8 @@ this.router.navigate(['/login'])
   }
 
  
-
+  changeCurrency(){
+    this.router.navigate(["/currency", this.userData._id])
+  }
 
 }
